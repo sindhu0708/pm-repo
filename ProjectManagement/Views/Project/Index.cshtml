@@ -1,0 +1,60 @@
+﻿@model ProjectManagement.Models.Project
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.projectCollection[0].name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.projectCollection[0].startDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.projectCollection[0].dueDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.projectCollection[0].description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.projectCollection[0].scope)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.projectCollection)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.startDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dueDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.scope)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
